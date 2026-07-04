@@ -10,92 +10,13 @@
 </head>
 <body>
 
-<!-- MODAL REGISTRO / LOGIN -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal-box">
-    <!-- PANEL REGISTRO -->
-    <div id="panelRegistro">
-      <h2 class="modal-title">Acceso al Grimorio</h2>
-      <p class="modal-ornament">— ✦ —</p>
-      <p class="modal-subtitle">Crea tu cuenta para imprimir fichas, localizar herbolarios cercanos y comprar desde casa.</p>
-
-      <div class="modal-field">
-        <label class="modal-label">Nombre completo *</label>
-        <input class="modal-input" id="regNombreCompleto" type="text" placeholder="Nombre y apellidos…">
-      </div>
-
-      <div class="modal-field">
-        <label class="modal-label">Celular / Teléfono *</label>
-        <input class="modal-input" id="regCelular" type="tel" placeholder="+34 600 000 000">
-      </div>
-
-      <div class="modal-field">
-        <label class="modal-label">Correo electrónico *</label>
-        <input class="modal-input" id="regEmail" type="email" placeholder="correo@ejemplo.com">
-      </div>
-
-      <div class="modal-field">
-        <label class="modal-label">Contraseña *</label>
-        <input class="modal-input" id="regPassword" type="password" placeholder="Mínimo 6 caracteres">
-      </div>
-
-      <div class="modal-field">
-        <label class="modal-label">Dirección completa</label>
-        <input class="modal-input" id="regDireccion" type="text" placeholder="Calle, número, piso…">
-      </div>
-
-      <div class="modal-field">
-        <label class="modal-label">Ciudad, Provincia y País *</label>
-        <input class="modal-input" id="regCiudadProvPais" type="text" placeholder="Ej: Barcelona, Cataluña, España">
-      </div>
-
-      <div class="modal-field">
-        <label class="modal-label">País (para tienda y compras online) *</label>
-        <select class="modal-input" id="regPais">
-          <option value="">— Selecciona tu país —</option>
-          <option value="ES">España</option>
-          <option value="AR">Argentina</option>
-          <option value="MX">México</option>
-          <option value="CO">Colombia</option>
-          <option value="CL">Chile</option>
-          <option value="PE">Perú</option>
-          <option value="US">Estados Unidos</option>
-          <option value="OTRO">Otro</option>
-        </select>
-      </div>
-
-      <p class="modal-error" id="regError">Por favor completa los campos obligatorios (*).</p>
-      <button class="modal-btn" onclick="registrar()">✦ Crear cuenta y acceder</button>
-      <p class="modal-switch">¿Ya tienes cuenta? <a onclick="togglePanel()">Iniciar sesión</a></p>
-    </div>
-    <!-- PANEL LOGIN -->
-    <div id="panelLogin" style="display:none">
-      <h2 class="modal-title">Bienvenido de nuevo</h2>
-      <p class="modal-ornament">— ✦ —</p>
-      <p class="modal-subtitle">Introduce tu correo para acceder a tu cuenta.</p>
-      <div class="modal-field">
-        <label class="modal-label">Correo electrónico</label>
-        <input class="modal-input" id="loginEmail" type="email" placeholder="correo@ejemplo.com">
-      </div>
-      <div class="modal-field">
-        <label class="modal-label">Contraseña</label>
-        <input class="modal-input" id="loginPassword" type="password" placeholder="Tu contraseña">
-      </div>
-      <p class="modal-error" id="loginError">Email o contraseña incorrectos.</p>
-      <button class="modal-btn" onclick="login()">✦ Acceder</button>
-      <p class="modal-switch">¿Primera vez? <a onclick="togglePanel()">Crear cuenta</a></p>
-    </div>
-    <div class="modal-corner"></div>
-  </div>
-</div>
-
 <div class="topbar">
   <a href="javascript:void(0)" class="topbar-logo" onclick="cerrarLibro()">
     <img src="/static/img/logo.jpg" alt="Logo"/>
     <span>Salud Natura</span>
   </a>
   <div id="topbarAuth">
-    <button class="topbar-register" onclick="abrirModal()">✦ Registrarse</button>
+    <a href="/newsletter" class="topbar-register">✦ Suscribirse</a>
   </div>
   <a href="/" class="btn-back">← Volver</a>
 </div>
@@ -217,7 +138,7 @@
             <strong>Tienda naturista cercana</strong>
             <span>Regístrate para ver dónde comprar en tu zona</span>
           </div>
-          <a href="#" class="herb-zone-link" id="zonaTiendaLink" onclick="accionZona(event,'tienda')">Registrarse</a>
+          <a href="/newsletter" class="herb-zone-link" id="zonaTiendaLink">Suscribirse al newsletter</a>
         </div>
 
         <!-- Zona compra online -->
@@ -229,7 +150,7 @@
             <strong>Comprar desde casa</strong>
             <span>Regístrate para ver la mejor opción de envío a tu dirección</span>
           </div>
-          <a href="#" class="herb-zone-link" id="zonaOnlineLink" onclick="accionZona(event,'online')">Registrarse</a>
+          <a href="/newsletter" class="herb-zone-link" id="zonaOnlineLink">Suscribirse al newsletter</a>
         </div>
 
         <span class="herb-num" id="herbNum">1 / —</span>
@@ -268,7 +189,7 @@
           <ul class="jugo-view-ing" id="jugoViewIng"></ul>
           <p class="jugo-view-sec">Preparación paso a paso</p>
           <ol class="jugo-view-pasos" id="jugoViewPasos"></ol>
-          <button class="btn-print" onclick="if(!getUsuario()){abrirModal()}else{window.print()}" style="margin-top:1rem">
+          <button class="btn-print" onclick="window.print()" style="margin-top:1rem">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
             Imprimir / Guardar ficha
           </button>
@@ -291,7 +212,7 @@
           <ul class="jugo-view-ing" id="infusionViewIng"></ul>
           <p class="jugo-view-sec">Preparación paso a paso</p>
           <ol class="jugo-view-pasos" id="infusionViewPasos"></ol>
-          <button class="btn-print" onclick="if(!getUsuario()){abrirModal()}else{window.print()}" style="margin-top:1rem">
+          <button class="btn-print" onclick="window.print()" style="margin-top:1rem">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
             Imprimir / Guardar ficha
           </button>
